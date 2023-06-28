@@ -6,7 +6,6 @@ import json
 import re
 from netmiko import ConnectHandler, NetmikoAuthenticationException
 import argparse
-import asyncio
 
 parser = argparse.ArgumentParser("./lgview")
 parser.add_argument("prefixo", help="Prefixo /24 a ser mitigado", type=str)
@@ -42,13 +41,9 @@ def get_data_from_lg(looking_glass_dados):
     busca = grep(resultado, args.asn_origem)
     for elemento in busca:
         if str(args.asn_mitigador) not in elemento:
-            print('AS-PATH: ' + '\033[91m' + elemento + '\033[0m')
+            print(f"AS-PATH: \033[91m{elemento}\033[0m")
         else:
-            print('AS-PATH: ' + '\033[92m' + elemento + '\033[0m')
-
-
-async def get_data_from_all_lg(list_of_lgs):
-    return await asyncio.gather(*map(get_data_from_lg, list_of_lgs))
+            print(f"AS-PATH:\033[92m{elemento}033[0m")
 
 
 if __name__ == '__main__':
