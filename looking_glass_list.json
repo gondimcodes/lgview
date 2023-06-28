@@ -1,0 +1,38 @@
+{
+  "Route Views": {
+    "device_type": "cisco_xe",
+    "host": "route-views.routeviews.org",
+    "username": "rviews",
+    "password": ""
+  },
+  "IX.br São Paulo": {
+    "device_type": "cisco_ios_telnet",
+    "host": "lg.sp.ptt.br"
+  },
+  "IX.br Rio de Janeiro": {
+    "device_type": "cisco_ios_telnet",
+    "host": "lg.rj.ix.br"
+  },
+  "IX.br Fortaleza": {
+    "device_type": "cisco_ios_telnet",
+    "host": "lg.ce.ix.br"
+  },
+  "AT&T": {
+    "device_type": "cisco_ios_telnet",
+    "host": "route-server.ip.att.net",
+    "username": "rviews",
+    "password": "rviews"
+  },
+  "Internexa": {
+    "device_type": "juniper_junos",
+    "host": "177.84.161.226",
+    "username": "bgp_view",
+    "password": "bgp_view"
+  },
+  "Algar Telecom": {
+    "device_type": "juniper_junos",
+    "host": "201.48.0.2",
+    "username": "rviews",
+    "password": "rviews"
+  }
+}
