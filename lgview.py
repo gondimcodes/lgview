@@ -6,6 +6,7 @@ import json
 import re
 from netmiko import ConnectHandler, NetmikoAuthenticationException
 import argparse
+import asyncio
 
 parser = argparse.ArgumentParser("./lgview")
 parser.add_argument("prefixo", help="Prefixo /24 a ser mitigado", type=str)
@@ -46,9 +47,14 @@ def get_data_from_lg(looking_glass_dados):
             print('AS-PATH: ' + '\033[92m' + elemento + '\033[0m')
 
 
+async def get_data_from_all_lg(list_of_lgs):
+    return await asyncio.gather(*map(get_data_from_lg, list_of_lgs))
+
+
 if __name__ == '__main__':
     with open(file="looking_glass_list.json", mode="r") as looking_glass_file:
         looking_glass_json = json.load(looking_glass_file)
+        print(f"Verificando Prefixo: {args.prefixo}\n")
         for looking_glass in looking_glass_json:
             print(f"Verificando looking glass: {looking_glass}")
             get_data_from_lg(looking_glass_json[looking_glass])
