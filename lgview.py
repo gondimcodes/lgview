@@ -4,7 +4,7 @@ Usage: python3 lgview.py 198.51.100.0/24 65200 65001
 """
 import json
 import re
-from netmiko import ConnectHandler, NetmikoAuthenticationException
+from netmiko import ConnectHandler
 import argparse
 
 parser = argparse.ArgumentParser("./lgview")
@@ -29,7 +29,7 @@ def grep(texto, dado):
 def get_data_from_lg(looking_glass_dados):
     try:
         consulta = ConnectHandler(**looking_glass_dados)
-    except NetmikoAuthenticationException:
+    except:
         print("Falha de autenticação no looking glass")
         return
     comando = "set cli screen-length 0" if \
@@ -43,7 +43,7 @@ def get_data_from_lg(looking_glass_dados):
         if str(args.asn_mitigador) not in elemento:
             print(f"AS-PATH: \033[91m{elemento}\033[0m")
         else:
-            print(f"AS-PATH:\033[92m{elemento}033[0m")
+            print(f"AS-PATH:\033[92m{elemento}\033[0m")
 
 
 if __name__ == '__main__':
