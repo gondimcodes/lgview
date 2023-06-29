@@ -26,18 +26,16 @@ def grep(texto, dado):
     return lista
 
 
-def get_data_from_lg(looking_glass_dados):
+def get_data_from_lg(looking_glass_dados, commands_dados):
     try:
         consulta = ConnectHandler(**looking_glass_dados)
     except:
         print("Falha de autenticação no looking glass")
         return
-    comando = "set cli screen-length 0" if \
-        looking_glass_dados["device_type"] == "juniper_junos" else "terminal length 0"
+    comando = commands_dados["comando1"]
     consulta.send_command(comando)
-    commando = f"show route protocol bgp {args.prefixo}" if \
-        looking_glass_dados["device_type"] == "juniper_junos" else f"show ip bgp {args.prefixo}"
-    resultado = consulta.send_command(commando)
+    comando = commands_dados["comando2"] + args.prefixo
+    resultado = consulta.send_command(comando)
     busca = grep(resultado, args.asn_origem)
     for elemento in busca:
         if str(args.asn_mitigador) not in elemento:
@@ -51,5 +49,7 @@ if __name__ == '__main__':
         looking_glass_json = json.load(looking_glass_file)
         print(f"Verificando Prefixo: {args.prefixo}\n")
         for looking_glass in looking_glass_json:
-            print(f"Verificando looking glass: {looking_glass}")
-            get_data_from_lg(looking_glass_json[looking_glass])
+            with open(file="commands_list.json", mode="r") as commands_file:
+                commands_json = json.load(commands_file)
+                print(f"Verificando looking glass: {looking_glass}")
+                get_data_from_lg(looking_glass_json[looking_glass], commands_json[looking_glass])

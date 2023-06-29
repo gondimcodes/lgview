@@ -1,0 +1,30 @@
+{
+  "Route Views": {
+    "comando1": "terminal length 0",
+    "comando2": "show ip bgp "
+  },
+  "IX.br São Paulo": {
+    "comando1": "terminal length 0",
+    "comando2": "show ip bgp "
+  },
+  "IX.br Rio de Janeiro": {
+    "comando1": "terminal length 0",
+    "comando2": "show ip bgp "
+  },
+  "IX.br Fortaleza": {
+    "comando1": "terminal length 0",
+    "comando2": "show ip bgp "
+  },
+  "AT&T": {
+    "comando1": "set cli screen-length 0",
+    "comando2": "show route protocol bgp "
+  },
+  "Internexa": {
+    "comando1": "set cli screen-length 0",
+    "comando2": "show route protocol bgp "
+  },
+  "Algar Telecom": {
+    "comando1": "set cli screen-length 0",
+    "comando2": "show route protocol bgp "
+  }
+}
