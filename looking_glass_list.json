@@ -17,12 +17,6 @@
     "device_type": "cisco_ios_telnet",
     "host": "lg.ce.ix.br"
   },
-  "AT&T": {
-    "device_type": "cisco_ios_telnet",
-    "host": "route-server.ip.att.net",
-    "username": "rviews",
-    "password": "rviews"
-  },
   "Internexa": {
     "device_type": "juniper_junos",
     "host": "177.84.161.226",
